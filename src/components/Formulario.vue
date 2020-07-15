@@ -1,12 +1,12 @@
 <template>
-  <form action="">
+  <form action="" v-on:submit="enviar">
 
     <p class="special">֍</p>
-
+    <!---Agregué required a 2 campos y las funciones de methods de acuerdo a ejemplo de clases--->
     <p>Usuario: 
-      <input type="text" class="small" placeholder="Escriba su Nombre" v-model="name"></p>
+      <input type="text" class="small" placeholder="Escriba su Nombre" v-model="name" required></p>
     <p>Edad: 
-      <input type="number" class="small" placeholder="0" v-model="edad"></p>
+      <input type="number" class="small" placeholder="0" v-model="edad" required></p>
     <p>Dojo de Origen: 
       <select name="Dojo" class="op" placeholder="Seleccione" v-model="origen">
         <option value="USA">Estados Unidos</option>
@@ -47,6 +47,12 @@ export default {
       maneja: '',
       descripcion:''
     }
+  },
+  methods: {
+    enviar: function(ev) {
+      ev.preventDefault();
+      console.log(this.name)
+    }
   }
 }
 </script>
@@ -55,6 +61,7 @@ export default {
 <style scoped>
 
 form {
+  display:inline-block;
   background-color: #EBECF0;
   margin: -20px auto;
   max-width: 560px;

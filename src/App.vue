@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     
-    <Formulario />         
+    <contadorvue />
+    <Formulario />     
   
   </div>
 </template>
 
 <script>
 import Formulario from './components/Formulario.vue'
+import contadorvue from './components/contadorvue.vue'
 
 export default {
   name: 'App',
   components: {
-    Formulario
-  },
+    Formulario,
+    contadorvue
+  }
 }
 </script>
 
