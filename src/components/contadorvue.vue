@@ -1,11 +1,11 @@
 <template>
   
-  <div class="count">
+  <div class="counter">
     <p class="special">֍</p>
     <h2>Counter Game!</h2>
 
-    <p>Contador de clicks:</p> {{timesclick}}
-    <p><button class="btn" @click="contando" @mouseover="hover = true" @mouseleave="hover = false">Clicky</button></p>
+    <p>Contador de clicks:</p> {{count}}
+    <p><button class="btn" @click="onClick" @mouseover="hover = true" @mouseleave="hover = false">Clicky</button></p>
   </div>
 
 </template>
@@ -15,28 +15,26 @@ export default {
   name: 'contador-vue',
   data: () => {
     return {
-    timesclick: 0,
     hover: false
     }
   },
-  methods: {
-    enviar: function(ev) {
-      ev.preventDefault();
-      console.log("yes")
-    },
-    contando: function() {
-        console.log("a click!")
-        this.timesclick++;
+  computed: {
+    count() {
+      return this.$store.state.count
     }
-
-  }
+  },
+    methods: {
+      onClick() {
+        this.$store.commit('increment')
+      },
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.count {
+.counter {
   position:relative;
   display:inline-block;
   vertical-align: top;
